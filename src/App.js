@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 //import Grid from "@material-ui/core/Grid";
 import Detail from "./components/Detail/Detail";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 const useStyles = makeStyles({});
 export default function App() {
@@ -16,13 +17,18 @@ export default function App() {
       <Header></Header>
       <Router>
         <Switch>
-          <Route path="/home">
+          <Route exact path="/">
+            <LandingPage></LandingPage>
+          </Route>
+          <Route exact path="/home">
             <Container fixed>
-              <Home />
+              <Home></Home>
             </Container>
           </Route>
           <Route path="/detail/:postid">
-            <Detail></Detail>
+            <Container fixed>
+              <Detail></Detail>
+            </Container>
           </Route>
         </Switch>
       </Router>
