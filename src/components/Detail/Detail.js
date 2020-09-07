@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../image/logo.png";
 import AddShoppingCartIcon from "@material-ui/icons/Comment";
 import {
@@ -10,7 +10,11 @@ import {
   TextField,
   makeStyles,
   IconButton,
+  Button,
 } from "@material-ui/core";
+import { useParams } from "react-router-dom";
+import Comment from "../Comment/Comment";
+import { commentData } from "../../fakeData/commentData";
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
@@ -18,36 +22,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Detail = () => {
+  const first5Comment = commentData.slice(0, 5);
+  const { postid } = useParams();
   const classes = useStyles();
+  const [detail, setDetail] = useState({});
+  const [comments, setComment] = useState(first5Comment);
+  useEffect(() => {
+    const url = `https://jsonplaceholder.typicode.com/posts/${postid}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setDetail(data));
+  }, []);
   return (
     <div>
-      <Container>
+      <React.Fragment>
         <Card>
           <CardContent>
             <CardMedia>
               <img src={logo} alt="" />
             </CardMedia>
             <Typography gutterBottom variant="h5" component="h2">
-              Lizard
+              <h2>
+                <b>Title : {detail.title}</b>
+              </h2>
             </Typography>
+            <Typography variant="body2" color="" component="p">
+              <h4>{detail.body}</h4>
+            </Typography>
+            <Typography variant="body2" component="p"></Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-            <Typography variant="body2" component="p">
-              Hello this is comment
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              <form noValidate autoComplete="off">
-                <TextField id="outlined-basic" variant="outlined" />
-                <IconButton color="primary" aria-label="add to shopping cart">
-                  <AddShoppingCartIcon />
-                </IconButton>
-              </form>
+              <h4>
+                <b>Comments</b>
+              </h4>
+              <p>
+                {" "}
+                {comments.map((cm) => (
+                  <Comment comment={cm}></Comment>
+                ))}
+              </p>
             </Typography>
           </CardContent>
         </Card>
-      </Container>
+      </React.Fragment>
     </div>
   );
 };

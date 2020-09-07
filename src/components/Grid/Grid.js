@@ -26,6 +26,7 @@ export default function FullWidthGrid() {
       .then((response) => response.json())
       .then((data) => setPost(data));
   }, []);
+
   const classes = useStyles();
 
   return (

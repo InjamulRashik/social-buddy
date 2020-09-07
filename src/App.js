@@ -21,10 +21,8 @@ export default function App() {
               <Home />
             </Container>
           </Route>
-          <Route path="/detail">
-            <Container fixed>
-              <Detail></Detail>
-            </Container>
+          <Route path="/detail/:postid">
+            <Detail></Detail>
           </Route>
         </Switch>
       </Router>
