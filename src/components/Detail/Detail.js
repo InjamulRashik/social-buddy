@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
   },
+  root: {
+    width: "50%",
+    height: "50%",
+    borderRadius: "50%",
+  },
 }));
 
 const Detail = () => {
@@ -39,7 +44,7 @@ const Detail = () => {
         <Card>
           <CardContent>
             <CardMedia>
-              <img src={logo} alt="" />
+              <img className={classes.root} src={logo} alt="" />
             </CardMedia>
             <Typography gutterBottom variant="h5" component="h2">
               <h2>
@@ -52,7 +57,7 @@ const Detail = () => {
             <Typography variant="body2" component="p"></Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               <h4>
-                <b>Comments</b>
+                <b>Comments</b> <br />
               </h4>
               <p>
                 {" "}

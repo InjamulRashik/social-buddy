@@ -7,6 +7,8 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 //import logo from "./public/logo.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -62,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  link: {
+    textDecoration: "none",
+    color: "white",
+  },
 }));
 
 export default function SearchAppBar() {
@@ -80,7 +86,9 @@ export default function SearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Social Buddy
+            <Link className={classes.link} to="/">
+              Social Buddy
+            </Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

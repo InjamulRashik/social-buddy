@@ -6,6 +6,12 @@ const useStyles = makeStyles((theme) => ({
     width: "50px",
     height: "50px",
     borderRadius: "50%",
+    marginLeft: "20px",
+    marginRight: "20px",
+    marginBottom: "20px",
+  },
+  display: {
+    display: "flex",
   },
 }));
 
@@ -14,13 +20,14 @@ const Comment = (props) => {
   const { name, body, image } = props.comment;
   return (
     <div>
-      <div>
+      <div className={classes.display}>
         {" "}
-        <img className={classes.root} src={image} alt="" />
+        <img className={classes.root} src={image} alt="" /> <br />
         <p>
           <b>{name} : </b>
           {body}
-        </p>
+        </p>{" "}
+        <br />
       </div>
     </div>
   );
